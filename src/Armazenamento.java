@@ -16,11 +16,12 @@ public class Armazenamento {
 		BufferedWriter arq = new BufferedWriter(new FileWriter("pontuacao.txt", true));
 		pontos = u.nome+"-"+u.estrela+"-"+u.moeda+"-"+u.comentario+"-"+u.topico+"-"+u.curtida;
 		arq.write(pontos);
+		System.out.println("Gravação realizada com sucesso para a pontuação do usuario "+u.nome);
 		arq.newLine();
 		arq.close();
 	}
 	
-	public void getPontosPorTipo(String tipo) throws IOException {
+	public void getPontosPorTipo(Usuario u, String tipo) throws IOException {
 		LerArquivo(u, tipo);
 	}
 	
@@ -43,6 +44,7 @@ public class Armazenamento {
 		if (u.estrela != 0) pontosUsuario.add("Tipo Estrela");
 		if (u.moeda != 0) pontosUsuario.add("Tipo Moeda");
 		if (u.topico != 0) pontosUsuario.add("Tipo Topico");
+		System.out.println(pontosUsuario);
 		return pontosUsuario;
 	}
 	
@@ -63,6 +65,7 @@ public class Armazenamento {
 		}
 		i.close();
 		s.close();
+		System.out.println(resultado);
 		return resultado;
 	}
 	

@@ -11,11 +11,11 @@ public class Placar {
 	Usuario u = new Usuario();
 	ArrayList<Integer> ranking = new ArrayList<>();
 	
-	private void retornaPontosUsuario() {
+	public void retornaPontosUsuario() {
 		placar.retornaPontosUsuario(u);
 	}	
 	
-	private ArrayList<Integer> rankingCurtida(Usuario u) throws IOException {
+	public ArrayList<Integer> rankingCurtida(Usuario u) throws IOException {
 		InputStream i = new FileInputStream("pontuacao.txt");
 		Scanner s = new Scanner(i);
 		while (s.hasNext()) {
@@ -26,11 +26,12 @@ public class Placar {
 		}
 		s.close();
 		i.close();
-		Collections.sort(ranking);
+		Collections.sort(ranking, Collections.reverseOrder());
+		System.out.println(ranking);
 		return ranking;
 	}
 
-	private ArrayList<Integer> rankingTopico(Usuario u) throws IOException {
+	public ArrayList<Integer> rankingTopico(Usuario u) throws IOException {
 		InputStream i = new FileInputStream("pontuacao.txt");
 		Scanner s = new Scanner(i);
 		while (s.hasNext()) {
@@ -41,11 +42,12 @@ public class Placar {
 		}
 		s.close();
 		i.close();
-		Collections.sort(ranking);
+		Collections.sort(ranking, Collections.reverseOrder());
+		System.out.println(ranking);
 		return ranking;
 	}
 
-	private ArrayList<Integer> rankingComentario(Usuario u) throws IOException {
+	public ArrayList<Integer> rankingComentario(Usuario u) throws IOException {
 		InputStream i = new FileInputStream("pontuacao.txt");
 		Scanner s = new Scanner(i);
 		while (s.hasNext()) {
@@ -56,11 +58,12 @@ public class Placar {
 		}
 		s.close();
 		i.close();
-		Collections.sort(ranking);
+		Collections.sort(ranking, Collections.reverseOrder());
+		System.out.println(ranking);
 		return ranking;
 	}
 
-	private ArrayList<Integer> rankingMoeda(Usuario u) throws IOException {
+	public ArrayList<Integer> rankingMoeda(Usuario u) throws IOException {
 		InputStream i = new FileInputStream("pontuacao.txt");
 		Scanner s = new Scanner(i);
 		while (s.hasNext()) {
@@ -71,11 +74,12 @@ public class Placar {
 		}
 		s.close();
 		i.close();
-		Collections.sort(ranking);
+		Collections.sort(ranking, Collections.reverseOrder());
+		System.out.println(ranking);
 		return ranking;
 	}
 
-	private ArrayList<Integer> rankingEstrela(Usuario u) throws IOException {
+	public ArrayList<Integer> rankingEstrela(Usuario u) throws IOException {
 		InputStream i = new FileInputStream("pontuacao.txt");
 		Scanner s = new Scanner(i);
 		while (s.hasNext()) {
@@ -86,31 +90,32 @@ public class Placar {
 		}
 		s.close();
 		i.close();
-		Collections.sort(ranking);
+		Collections.sort(ranking, Collections.reverseOrder());
+		System.out.println(ranking);
 		return ranking;
 	}
 
-	private void registraPontosUsuario() throws IOException {
+	public void registraPontosUsuario(Usuario u) throws IOException {
 		placar.GravaPontuacao(u);
 	}
 	
-	private void armazenaEstrela(int pontuacao) {
+	public void armazenaEstrela(Usuario u, int pontuacao) {
 		u.estrela += pontuacao;;
 	}
 	
-	private void armazenaMoeda(int pontuacao) {
+	public void armazenaMoeda(Usuario u,int pontuacao) {
 		u.moeda += pontuacao;
 	}
 	
-	private void armazenaComentario(int pontuacao) {
+	public void armazenaComentario(Usuario u,int pontuacao) {
 		u.comentario += pontuacao;
 	}
 	
-	private void armazenaTopico(int pontuacao) {
+	public void armazenaTopico(Usuario u,int pontuacao) {
 		u.topico += pontuacao;
 	}
 	
-	private void armazenaCurtida(int pontuacao) {
+	public void armazenaCurtida(Usuario u,int pontuacao) {
 		u.curtida += pontuacao;
 	}
 }
