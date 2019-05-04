@@ -1,12 +1,14 @@
 import static org.junit.Assert.*;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 public class TestesPlacar {
 
 	Usuario u = new Usuario();
-	Armazenamento a = new Armazenamento();
 	Mock m = new Mock();
+	Placar p = new Placar();
 		
 	@Test
 	public void testaUsuario() {
@@ -15,43 +17,72 @@ public class TestesPlacar {
 	}
 	
 	@Test
-	public void testaAtribuicaoPontuacao() {
-		m.armazenaComentario(u,10);
-		m.armazenaCurtida(u,100);
-		m.armazenaEstrela(u,2);
-		m.armazenaMoeda(u,9);
-		m.armazenaTopico(u,123);
+	public void testaPontucao(){
+		m.GravaPontuacao(u);
+		assertEquals(1, u.comentario);
+		assertEquals(2, u.curtida);
+		assertEquals(3, u.estrela);
+		assertEquals(4, u.moeda);
+		assertEquals(5, u.topico);
 	}
 	
 	@Test
-	public void testaRegistraPontos() {
-		m.armazenaComentario(u,10);
-		m.armazenaCurtida(u,100);
-		m.armazenaEstrela(u,2);
-		m.armazenaMoeda(u,9);
-		m.armazenaTopico(u,123);
-		try {
-			m.registraPontosUsuario(u);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public void testaPontosPorTipo() {
+		assertEquals("Comentario, Estrela", m.getPontosPorTipo(u, "Comentario"));
 	}
 	
 	@Test
-	public void testaRankings() {
-		m.armazenaComentario(u,10);
-		m.armazenaCurtida(u,100);
-		m.armazenaEstrela(u,2);
-		m.armazenaMoeda(u,9);
-		m.armazenaTopico(u,123);
-		try {
-			m.rankingComentario(u);
-			m.rankingCurtida(u);
-			m.rankingEstrela(u);
-			m.rankingMoeda(u);
-			m.rankingTopico(u);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public void testaRetornaPontos() {
+		m.GravaPontuacao(u);
+		u.nome = "Paulo";
+		ArrayList<Integer> testaPontos = new ArrayList<>();
+		testaPontos.add(1);
+		testaPontos.add(2);
+		testaPontos.add(3);
+		testaPontos.add(4);
+		testaPontos.add(5);
+		assertEquals(testaPontos, m.retornaPontosUsuario(u));
+	}
+	
+	@Test
+	public void testaRetornaPontosUsuario() {
+		ArrayList<String> testaPontos = new ArrayList<>();
+		testaPontos = p.retornaPontosUsuario(u);
+		assertEquals(testaPontos, p.retornaPontosUsuario(u));
+	}
+	
+	@Test
+	public void testaRankingCurtida() throws IOException {
+		ArrayList<Integer> testaPontos = new ArrayList<>();
+		testaPontos = p.rankingCurtida(u);
+		assertEquals(testaPontos, p.rankingCurtida(u));
+	}
+	
+	@Test
+	public void testaRankingComentario() throws IOException {
+		ArrayList<Integer> testaPontos = new ArrayList<>();
+		testaPontos = p.rankingComentario(u);
+		assertEquals(testaPontos, p.rankingComentario(u));
+	}
+	
+	@Test
+	public void testaRankingEstrela() throws IOException {
+		ArrayList<Integer> testaPontos = new ArrayList<>();
+		testaPontos = p.rankingEstrela(u);
+		assertEquals(testaPontos, p.rankingEstrela(u));
+	}
+	
+	@Test
+	public void testaRankingMoeda() throws IOException {
+		ArrayList<Integer> testaPontos = new ArrayList<>();
+		testaPontos = p.rankingMoeda(u);
+		assertEquals(testaPontos, p.rankingMoeda(u));
+	}
+	
+	@Test
+	public void testaRankingTopico() throws IOException {
+		ArrayList<Integer> testaPontos = new ArrayList<>();
+		testaPontos = p.rankingTopico(u);
+		assertEquals(testaPontos, p.rankingTopico(u));
 	}
 }

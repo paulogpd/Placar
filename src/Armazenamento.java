@@ -13,7 +13,7 @@ public class Armazenamento {
 	
 	public void GravaPontuacao(Usuario u) throws IOException {
 		String pontos;
-		BufferedWriter arq = new BufferedWriter(new FileWriter("pontuacao.txt", true));
+		BufferedWriter arq = new BufferedWriter(new FileWriter("jogo.txt", true));
 		pontos = u.nome+"-"+u.estrela+"-"+u.moeda+"-"+u.comentario+"-"+u.topico+"-"+u.curtida;
 		arq.write(pontos);
 		System.out.println("Gravação realizada com sucesso para a pontuação do usuario "+u.nome);
@@ -21,8 +21,8 @@ public class Armazenamento {
 		arq.close();
 	}
 	
-	public void getPontosPorTipo(Usuario u, String tipo) throws IOException {
-		LerArquivo(u, tipo);
+	public String getPontosPorTipo(Usuario u, String tipo) throws IOException {
+		return LerArquivo(u, tipo);
 	}
 	
 	public void retornaUsuarioComPontos() throws IOException {

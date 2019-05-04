@@ -11,8 +11,8 @@ public class Placar {
 	Usuario u = new Usuario();
 	ArrayList<Integer> ranking = new ArrayList<>();
 	
-	public void retornaPontosUsuario() {
-		placar.retornaPontosUsuario(u);
+	public ArrayList<String> retornaPontosUsuario(Usuario u) {
+		return placar.retornaPontosUsuario(u);
 	}	
 	
 	public ArrayList<Integer> rankingCurtida(Usuario u) throws IOException {
@@ -27,7 +27,6 @@ public class Placar {
 		s.close();
 		i.close();
 		Collections.sort(ranking, Collections.reverseOrder());
-		System.out.println(ranking);
 		return ranking;
 	}
 
@@ -43,7 +42,6 @@ public class Placar {
 		s.close();
 		i.close();
 		Collections.sort(ranking, Collections.reverseOrder());
-		System.out.println(ranking);
 		return ranking;
 	}
 
@@ -59,7 +57,6 @@ public class Placar {
 		s.close();
 		i.close();
 		Collections.sort(ranking, Collections.reverseOrder());
-		System.out.println(ranking);
 		return ranking;
 	}
 
@@ -75,7 +72,6 @@ public class Placar {
 		s.close();
 		i.close();
 		Collections.sort(ranking, Collections.reverseOrder());
-		System.out.println(ranking);
 		return ranking;
 	}
 
@@ -91,7 +87,6 @@ public class Placar {
 		s.close();
 		i.close();
 		Collections.sort(ranking, Collections.reverseOrder());
-		System.out.println(ranking);
 		return ranking;
 	}
 
